@@ -1,0 +1,57 @@
+.post-container {
+  width: 500px;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  margin: 20px auto;
+  font-family: 'Arial';
+  border-radius: 10px;
+}
+
+.author {
+  font-weight: bold;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.icon {
+  margin-right: 15px;
+}
+
+.save {
+  margin-left: auto;
+}
+
+.likes {
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.caption {
+  padding: 5px 10px;
+}
+
+.comments {
+  padding: 5px 10px;
+  color: #555;
+}
+
+.view-comments {
+  color: #888;
+  cursor: pointer;
+}
+
+.coment {
+  margin-top: 3px;
+}
+
+.time {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #aaa;
+}
