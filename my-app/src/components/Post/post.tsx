@@ -52,7 +52,7 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
       <div className="actions">
 
       <Box className="actions" display="flex" alignItems="center" gap={1}>
-      <IconButton onClick={handleLike}>
+      <IconButton onClick={handleLike}>{likeCount}
       {liked ? (
       <FavoriteIcon style={{ color: "red" }} />
       ) : (
@@ -60,9 +60,18 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
       )}
     </IconButton>
     <Box>
-    <IconButton onClick={toggleCommentForm}>
+    <IconButton onClick={toggleCommentForm}> 
     <ChatBubbleOutlineIcon style={{ color: "black" }} />   
-    
+     </IconButton>
+     <IconButton><div className="comments">
+        <span
+          className="view-comments"
+          onClick={toggleComments}
+        >
+          {showComments
+            ? "Hide comments"
+            : `View all ${commentList.length} comments`}
+        </span></div>
     </IconButton>
     
    </Box>
