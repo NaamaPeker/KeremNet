@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import './comments.css';
+import './CommentForm.css';
+import TextField from '@mui/material/TextField';
+import { CommentType } from '../CommentSection/CommentSection';
 
 type CommentFormProps = {
-  onSubmit: (comment: { author: string; text: string; timestamp: Date }) => void;
+  onSubmit: (comment:CommentType ) => void;
 };
 
 const CommentForm = ({ onSubmit }: CommentFormProps) => {
@@ -20,7 +22,7 @@ const CommentForm = ({ onSubmit }: CommentFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="comment-form">
-      <input
+      <TextField
         type="text"
         placeholder="Your Name"
         value={author}

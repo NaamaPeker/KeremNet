@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import CommentForm from "./commentForm";
-import Comment from "./Comment";
+import CommentForm from "../CommentForm/commentForm";
+import Comment from "../Comment/Comment";
 import "./post.css";
-
-interface CommentType {
-  author: string;
-  text: string;
-  timestamp: Date;
-}
+import { CommentType } from "../CommentSection/CommentSection";
 
 interface PostProps {
   content: string;
@@ -52,21 +47,19 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
       </div>
 
       <div className="actions">
-        <span
+        <button
           className="icon"
           onClick={handleLike}
           style={{color: liked ? "red" : "black" }}
         >
           ❤️
-        </span>
-        <span
+        </button>
+        <button
           className="icon"
           onClick={toggleCommentForm}
         >
           💬
-        </span>
-        <span className="icon">✈️</span>
-        <span className="icon save">🔖</span>
+        </button>
       </div>
 
       <div className="likes">

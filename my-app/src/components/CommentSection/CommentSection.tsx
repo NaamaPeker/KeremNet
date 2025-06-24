@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Comment from './Comment';
-import CommentForm from './commentForm';
+import Comment from '../Comment/Comment';
+import CommentForm from '../CommentForm/commentForm';
 import './comments.css';
 
-type CommentType = {
+export type CommentType = {
   author: string;
   text: string;
   timestamp: Date;
@@ -24,8 +24,8 @@ const CommentSection = () => {
         {comments.length === 0 ? (
           <p>No comments yet. Be the first to comment!</p>
         ) : (
-          comments.map((comment, index) => (
-            <Comment key={index} author={comment.author} text={comment.text} timestamp={comment.timestamp} />
+          comments.map(({author, text, timestamp}, index) => (
+            <Comment key={index} author={author} text={text} timestamp={timestamp} />
           ))
         )}
       </div>
