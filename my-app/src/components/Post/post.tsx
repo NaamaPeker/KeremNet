@@ -3,6 +3,10 @@ import CommentForm from "../CommentForm/commentForm";
 import Comment from "../Comment/Comment";
 import "./post.css";
 import { CommentType } from "../CommentSection/CommentSection";
+import { IconButton, Box } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 interface PostProps {
   content: string;
@@ -11,11 +15,11 @@ interface PostProps {
 }
 
 const Post: React.FC<PostProps> = ({ content, author, date }) => {
-  const [showComments, setShowComments] = useState(false);
-  const [showCommentForm, setShowCommentForm] = useState(false);
+  const [showComments, setShowComments] = useState<boolean>(false);
+  const [showCommentForm, setShowCommentForm] = useState<boolean>(false);
   const [commentList, setCommentList] = useState<CommentType[]>([]);
-  const [likeCount, setLikeCount] = useState(0);
-  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState<number>(0);
+  const [liked, setLiked] = useState<boolean>(false);
 
   const toggleComments = () => setShowComments(!showComments);
   const toggleCommentForm = () => setShowCommentForm(!showCommentForm);
@@ -39,7 +43,6 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
     <div className="post-container">
       <div>
         <span className="author">{author}</span>
-        <span className="icon save">•••</span>
       </div>
 
       <div className="actions">
@@ -47,35 +50,23 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
       </div>
 
       <div className="actions">
-        <button
-          className="icon"
-          onClick={handleLike}
-          style={{color: liked ? "red" : "black" }}
-        >
-          ❤️
-        </button>
-        <button
-          className="icon"
-          onClick={toggleCommentForm}
-        >
-          💬
-        </button>
-      </div>
 
-      <div className="likes">
-        <strong>{likeCount}</strong> {likeCount === 1 ? "like" : "likes"}
-      </div>
-
-      <div className="comments">
-        <span
-          className="view-comments"
-          onClick={toggleComments}
-        >
-          {showComments
-            ? "Hide comments"
-            : `View all ${commentList.length} comments`}
-        </span>
-
+      <Box className="actions" display="flex" alignItems="center" gap={1}>
+      <IconButton onClick={handleLike}>
+      {liked ? (
+      <FavoriteIcon style={{ color: "red" }} />
+      ) : (
+      <FavoriteBorderIcon style={{ color: "black" }} />
+      )}
+    </IconButton>
+    <Box>
+    <IconButton onClick={toggleCommentForm}>
+    <ChatBubbleOutlineIcon style={{ color: "black" }} />   
+    
+    </IconButton>
+    
+   </Box>
+   </Box>
         {showComments && ( <div>
             {commentList.map((currComment, index) => (
               <Comment

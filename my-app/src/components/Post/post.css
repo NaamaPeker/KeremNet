@@ -1,26 +1,44 @@
 .post-container {
-  width:60vh;
+  width: 60vh;
   border: 1px solid #dbdbdb;
   background-color: #fff;
-  margin: 20px auto;
-  font-family: 'Arial';
-  border-radius: 10px;
+  font: 'Arial';
+  border-radius: 15px;
+  border-color: #0f0fd9;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
+.space
+{
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .author {
   font-weight: bold;
   flex: 1;
+  padding-left: 12px;
+  padding-top: 10px;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  padding: 10px;
-  font-size: 20px;
+  gap: 12px;
+  padding: 0 12px;
 }
 
 .icon {
-  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .save {
@@ -28,26 +46,35 @@
 }
 
 .likes {
-  padding: 0 10px;
+  padding-left: 12px;
   font-weight: bold;
 }
 
 .comments {
-  padding: 5px 10px;
-  color: #555;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #444;
 }
 
 .view-comments {
   color: #0f0fd9;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .coment {
-  margin-top: 3px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .time {
-  padding: 5px 10px;
+  padding-left: 12px;
   font-size: 12px;
   color: #aaa;
+  padding-bottom: 10px;
 }

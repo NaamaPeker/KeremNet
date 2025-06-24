@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "./components/Post/post";
 import mockPosts from "./posts.json";
-
+import "../src/components/Post/post.css"
 interface PostData {
   content: string;
   author: string;
@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="space">
       {posts.length === 0 ? (
         <p>Loading posts...</p>
       ) : (

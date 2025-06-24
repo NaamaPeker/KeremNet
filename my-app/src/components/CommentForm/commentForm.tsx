@@ -1,40 +1,55 @@
-import React, { useState } from 'react';
-import './CommentForm.css';
-import TextField from '@mui/material/TextField';
-import { CommentType } from '../CommentSection/CommentSection';
+import React, { useState } from "react";
+import { TextField, Button, Box } from "@mui/material";
+import "../CommentForm/CommentForm.css";
 
 type CommentFormProps = {
-  onSubmit: (comment:CommentType ) => void;
+  onSubmit: (comment: { author: string; text: string; timestamp: Date }) => void;
 };
 
 const CommentForm = ({ onSubmit }: CommentFormProps) => {
-  const [author, setAuthor] = useState('');
-  const [commentText, setCommentText] = useState('');
+  const [author, setAuthor] = useState("");
+  const [commentText, setCommentText] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (author.trim() && commentText.trim()) {
       onSubmit({ author, text: commentText, timestamp: new Date() });
-      setAuthor('');
-      setCommentText('');
+      setAuthor("");
+      setCommentText("");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="comment-form">
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      display="flex"
+      flexDirection="column"
+      gap={2}
+      px={2}
+      pb={2}
+    >
       <TextField
-        type="text"
-        placeholder="Your Name"
+        label="Your Name"
+        variant="outlined"
+        size="small"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
+        fullWidth
       />
-      <textarea
-        placeholder="Write your comment..."
+      <TextField
+        label="Write your comment..."
+        variant="outlined"
+        multiline
+        rows={3}
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
+        fullWidth
       />
-      <button type="submit">Add Comment</button>
-    </form>
+      <Button type="submit" variant="contained" color="primary">
+        Add Comment
+      </Button>
+    </Box>
   );
 };
 
