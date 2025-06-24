@@ -5,7 +5,7 @@ const date = new Date();
 function App() {
   return (
     <div className="App">
-      <Post content= {"hello world"} comments={6} likes={6} author="naama peker" date={date}/>
+      <Post content={"hello world"}author="naama peker" date={date} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .post-container {
-  width: 500px;
+  width:60vh;
   border: 1px solid #dbdbdb;
   background-color: #fff;
   margin: 20px auto;
@@ -32,17 +32,13 @@
   font-weight: bold;
 }
 
-.caption {
-  padding: 5px 10px;
-}
-
 .comments {
   padding: 5px 10px;
   color: #555;
 }
 
 .view-comments {
-  color: #888;
+  color: #dbdbdbfa;
   cursor: pointer;
 }
 
