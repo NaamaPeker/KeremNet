@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./post.css"
 
 interface PostProps {
@@ -9,7 +9,9 @@ interface PostProps {
   date?:Date;
 }
 
+
 const Post: React.FC<PostProps> = ({content, comments, likes, author, date }) => {
+
   return (
     <div className="post-container">
       <div>
