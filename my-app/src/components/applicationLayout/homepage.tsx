@@ -1,3 +1,9 @@
-import React from 'react';
-    const Home = () => <h1>Home Page</h1>;
-    export default Home;
+import React from "react";
+
+const HomePage: React.FC = () => {
+  return (
+    <div style={{ backgroundColor: "pink", minHeight: "100vh" }}><h1>Welcome to KeremNet Home page</h1></div>
+  );
+};
+
+export default HomePage;

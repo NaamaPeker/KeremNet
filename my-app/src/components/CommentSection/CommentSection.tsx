@@ -1,30 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Comment from '../Comment/Comment';
-import CommentForm from '../CommentForm/commentForm';
-import './comments.css';
+import '../Comment/comments.css';
 
 export type CommentType = {
   author: string;
   text: string;
-  timestamp: Date;
+  timestamp: string;
 };
 
-const CommentSection = () => {
-  const [comments, setComments] = useState<CommentType[]>([]);
+interface CommentSectionProps {
+  comments: CommentType[];  
+}
 
-  const addComment = (newComment: CommentType) => {
-    setComments([...comments, newComment]);
-  };
-
+const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
   return (
     <div className="comment-section">
       <h2>Comments</h2>
-      <CommentForm onSubmit={addComment} />
       <div>
         {comments.length === 0 ? (
           <p>No comments yet. Be the first to comment!</p>
         ) : (
-          comments.map(({author, text, timestamp}, index) => (
+          comments.map(({ author, text, timestamp }, index) => (
             <Comment key={index} author={author} text={text} timestamp={timestamp} />
           ))
         )}

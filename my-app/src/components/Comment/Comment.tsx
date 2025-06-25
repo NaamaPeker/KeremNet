@@ -4,7 +4,7 @@ import './comments.css';
 interface CommentProps {
   author: string;
   text: string;
-  timestamp: Date;
+  timestamp: string;
 }
 
 const Comment: React.FC<CommentProps> = ({ author, text, timestamp }) => {

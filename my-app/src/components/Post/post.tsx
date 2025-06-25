@@ -1,41 +1,44 @@
 import React, { useState } from "react";
 import CommentForm from "../CommentForm/commentForm";
-import Comment from "../Comment/Comment";
 import "./post.css";
 import { CommentType } from "../CommentSection/CommentSection";
 import { IconButton, Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import CommentSection from "../CommentSection/CommentSection";
 
 interface PostProps {
   content: string;
   author: string;
-  date: Date;
+  date: string;
+  comments: CommentType[];
+  likeCount: number;
 }
 
-const Post: React.FC<PostProps> = ({ content, author, date }) => {
-  const [showComments, setShowComments] = useState<boolean>(false);
-  const [showCommentForm, setShowCommentForm] = useState<boolean>(false);
-  const [commentList, setCommentList] = useState<CommentType[]>([]);
-  const [likeCount, setLikeCount] = useState<number>(0);
-  const [liked, setLiked] = useState<boolean>(false);
+const Post: React.FC<PostProps> = ({ content, author, date, comments, likeCount }) => {
+  const [showComments, setShowComments] = useState(false);
+  const [showCommentForm, setShowCommentForm] = useState(false);
+  const [commentList, setCommentList] = useState<CommentType[]>(comments);
+  const [likes, setLikes] = useState<number>(likeCount);
+  const [liked, setLiked] = useState(false);
 
-  const toggleComments = () => setShowComments(!showComments);
-  const toggleCommentForm = () => setShowCommentForm(!showCommentForm);
+  const toggleComments = () => {
+    setShowComments((prev) => !prev);
+    setShowCommentForm(false);
+  };
+
+  const toggleCommentForm = () => setShowCommentForm((prev)=> !prev);
 
   const handleAddComment = (newComment: CommentType) => {
-    setCommentList(prev => [...prev, newComment]);
+    setCommentList([...commentList, newComment]);
     setShowCommentForm(false);
     setShowComments(true);
   };
 
   const handleLike = () => {
-    if (liked) {
-      setLikeCount(prev => Math.max(prev - 1, 0));
-    } else {
-      setLikeCount(prev => prev + 1);
-    }
+    const newLikeCount = liked ? likes - 1 : likes + 1;
+    setLikes(newLikeCount);
     setLiked(!liked);
   };
 
@@ -46,53 +49,32 @@ const Post: React.FC<PostProps> = ({ content, author, date }) => {
       </div>
 
       <div className="actions">
-        <span className="contect">{content}</span>
+        <span className="content">{content}</span>
       </div>
 
       <div className="actions">
+        <Box display="flex" alignItems="center" gap={1}>
+          <IconButton onClick={handleLike}>
+            {likes}
+            {liked ? <FavoriteIcon style={{ color: "red" }} /> : <FavoriteBorderIcon />}
+          </IconButton>
 
-      <Box className="actions" display="flex" alignItems="center" gap={1}>
-      <IconButton onClick={handleLike}>{likeCount}
-      {liked ? (
-      <FavoriteIcon style={{ color: "red" }} />
-      ) : (
-      <FavoriteBorderIcon style={{ color: "black" }} />
-      )}
-    </IconButton>
-    <Box>
-    <IconButton onClick={toggleCommentForm}> 
-    <ChatBubbleOutlineIcon style={{ color: "black" }} />   
-     </IconButton>
-     <IconButton><div className="comments">
-        <span
-          className="view-comments"
-          onClick={toggleComments}
-        >
-          {showComments
-            ? "Hide comments"
-            : `View all ${commentList.length} comments`}
-        </span></div>
-    </IconButton>
-    
-   </Box>
-   </Box>
-        {showComments && ( <div>
-            {commentList.map((currComment, index) => (
-              <Comment
-                key={index}
-                author={currComment.author}
-                text={currComment.text}
-                timestamp={currComment.timestamp}
-              />
-            ))}
-            {}
-          </div>
-        )}
+          <IconButton onClick={toggleCommentForm}>
+            <ChatBubbleOutlineIcon />
+          </IconButton>
+
+          <Box>
+            <span className="view-comments" onClick={toggleComments}>
+              {showComments ? "Hide comments" : `View all ${commentList.length} comments`}
+            </span>
+          </Box>
+        </Box>
       </div>
 
+      {showComments && <CommentSection comments={commentList} />}
       {showCommentForm && <CommentForm onSubmit={handleAddComment} />}
 
-      <div className="time">{date.toDateString()}</div>
+      <div className="time">{date}</div>
     </div>
   );
 };

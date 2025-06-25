@@ -1,44 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Post from "./components/Post/post";
-import mockPosts from "./posts.json";
 import "../src/components/Post/post.css"
 import ApplicationLayout from "../src/components/applicationLayout/ApplicationLayout";
+import {Routes, Route} from "react-router-dom";
+import "../src/components/Post/post.css"
+import GetPosts from "./components/Post/GetPosts";
+import HomePage from "./components/applicationLayout/HomePage";
 
-interface PostData {
-  content: string;
-  author: string;
-  date: string; 
-}
-
-function App() {
-  const [posts, setPosts] = useState<PostData[]>([]);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      await new Promise(res => setTimeout(res, 500));
-      setPosts(mockPosts);
-    };
-
-    loadPosts();
-  }, []);
-      
-
+function App(){
   return (
-    <div className="space">
+  <div className="space">
   <ApplicationLayout>
-      {posts.length === 0 ? (
-        <p>Loading posts...</p>
-      ) : (
-        posts.map(({content,author,date}) => (
-          <Post
-            content={content}
-            author={author}
-            date={new Date(date)}
-          />
-        ))
-      )}
-      </ApplicationLayout>
-    </div>
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/GetPosts" element={<GetPosts/>}/>  
+    </Routes>
+    </ApplicationLayout>
+</div>
   );
 }
 

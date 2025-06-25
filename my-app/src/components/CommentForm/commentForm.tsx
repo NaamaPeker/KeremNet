@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import "../CommentForm/CommentForm.css";
+import "../Comment/comments.css";
 
 type CommentFormProps = {
-  onSubmit: (comment: { author: string; text: string; timestamp: Date }) => void;
+  onSubmit: (comment: { author: string; text: string; timestamp: string }) => void;
 };
 
-const CommentForm = ({ onSubmit }: CommentFormProps) => {
-  const [author, setAuthor] = useState("");
-  const [commentText, setCommentText] = useState("");
+const CommentForm: React.FC<CommentFormProps> = ({onSubmit}) => { 
+  const [author, setAuthor] = useState<string>("");
+  const [commentText, setCommentText] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (author.trim() && commentText.trim()) {
-      onSubmit({ author, text: commentText, timestamp: new Date() });
+      onSubmit({ author, text: commentText, timestamp: ""});
       setAuthor("");
       setCommentText("");
     }
@@ -26,7 +27,6 @@ const CommentForm = ({ onSubmit }: CommentFormProps) => {
       display="flex"
       flexDirection="column"
       gap={2}
-      px={2}
       pb={2}
     >
       <TextField

@@ -15,12 +15,14 @@
 
 .space
 {
-  height:100%;
+  width:100vw;
+  height:100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .author {
   font-weight: bold;
   flex: 1;
@@ -39,10 +41,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.save {
-  margin-left: auto;
 }
 
 .likes {
