@@ -21,7 +21,7 @@ const ApplicationLayout: React.FC<LayoutProps> = ({ children }) => {
           <Button component={Link} to="/" color="inherit">
             <HomeIcon />
           </Button>
-          <Button component={Link} to="/GetPosts" color="inherit">
+          <Button component={Link} to="/posts" color="inherit">
             Posts
           </Button>
         </Toolbar>

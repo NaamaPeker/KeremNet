@@ -12,7 +12,7 @@ export interface PostData {
   likeCount: number;
 }
 
-function GetPosts() {
+function Posts() {
   const [posts, setPosts] = useState<PostData[]>([]);
 
   useEffect(() => {
@@ -25,18 +25,19 @@ function GetPosts() {
   }, []);
 
   return (
-    <div>
-      {posts.map((post) => (
-        <Post
-        key={post.id}
-        author={post.author}
-        content={post.content}
-        date={post.date}
-        comments={post.comments}
-        likeCount={post.likeCount}/>
-      ))}
-    </div>
-  );
+  <div>
+    {posts.map(({ id, author, content, date, comments, likeCount }) => (
+      <Post
+        key={id}
+        author={author}
+        content={content}
+        date={date}
+        comments={comments}
+        likeCount={likeCount}
+      />
+    ))}
+  </div>
+);
 };
 
-export default GetPosts;
+export default Posts;

@@ -2,7 +2,7 @@ import "../src/components/Post/post.css"
 import ApplicationLayout from "../src/components/applicationLayout/ApplicationLayout";
 import {Routes, Route} from "react-router-dom";
 import "../src/components/Post/post.css"
-import GetPosts from "./components/Post/GetPosts";
+import Posts from "./components/Post/GetPosts";
 import HomePage from "./components/applicationLayout/HomePage";
 
 function App(){
@@ -11,7 +11,7 @@ function App(){
   <ApplicationLayout>
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/GetPosts" element={<GetPosts/>}/>  
+    <Route path="/posts" element={<Posts/>}/>  
     </Routes>
     </ApplicationLayout>
 </div>
