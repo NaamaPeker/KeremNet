@@ -2,7 +2,7 @@
   {
     "id": 1,
     "content": "first post.",
-    "author": "hila peker",
+    "author": "hila_peker",
     "date": "24/06/2025 14:40",
     "comments":[
      {
@@ -16,7 +16,7 @@
   {
     "id": 2,
     "content": "second post.",
-    "author": "yali peker",
+    "author": "yali_peker",
     "date": "24/06/2025 14:50",
     "comments":[
      {

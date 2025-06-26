@@ -3,7 +3,10 @@ import ApplicationLayout from "../src/components/applicationLayout/ApplicationLa
 import {Routes, Route} from "react-router-dom";
 import "../src/components/Post/post.css"
 import Posts from "./components/Post/GetPosts";
-import HomePage from "./components/applicationLayout/HomePage";
+import HomePage from "./components/applicationLayout/homepage";
+import PostInfo from "./queries/PostInfo";
+import AuthorInfo from "./queries/AuthorInfo";
+import AllAuthors from "./queries/AllAuthors";
 
 function App(){
   return (
@@ -11,7 +14,10 @@ function App(){
   <ApplicationLayout>
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/posts" element={<Posts/>}/>  
+    <Route path="/posts" element={<Posts/>}/>   
+    <Route path="/post/:id" element={<PostInfo/>}/>
+    <Route path="/posts/:author" element={<AuthorInfo/>}/>
+    <Route path="/authors" element={<AllAuthors/>}/>
     </Routes>
     </ApplicationLayout>
 </div>
