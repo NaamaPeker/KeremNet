@@ -32,3 +32,10 @@
   align-items: center;
   max-width: 100%;
 }
+button {
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}

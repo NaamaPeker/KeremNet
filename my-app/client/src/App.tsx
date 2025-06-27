@@ -8,6 +8,8 @@ import PostInfo from "./queries/PostInfo";
 import AuthorInfo from "./queries/AuthorInfo";
 import AllAuthors from "./queries/AllAuthors";
 import CheckServer from "./queries/CheckServer";
+import AddPost from "./components/Post/addPost";
+
 function App(){
   return (
   <div className="space">
@@ -19,6 +21,7 @@ function App(){
     <Route path="/posts/:author" element={<AuthorInfo/>}/>
     <Route path="/authors" element={<AllAuthors/>}/>
     <Route path="/Running" element={<CheckServer/>}/>
+    <Route path="/addPost" element={<AddPost/>}/>
     </Routes>
     </ApplicationLayout>
 </div>
