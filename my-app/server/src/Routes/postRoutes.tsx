@@ -11,7 +11,8 @@ router.get('/posts/:author', getPostsByAuthor);
 
 router.get('/authors', getAllAuthors);
 
-router.post('/addhost', createNewPost);
+router.post('/addpost/', createNewPost);
+
 
 
 

@@ -75,6 +75,7 @@ const ApplicationLayout: React.FC<LayoutProps> = ({ children }) => {
 )}
       <Link to="/authors"><button>see all authors</button></Link>
         <Link to="/Running"><button>check if server is up</button></Link>
+        <Link to="/addPost"><button>add post</button></Link>
       </Stack>
       <Container className="layout-content">{children}</Container>
     </Box>

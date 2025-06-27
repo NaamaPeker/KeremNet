@@ -13,7 +13,7 @@ function AddPost() {
     const newPost = { id, author, content };
 
     try {
-      const res = await fetch('http://localhost:3001/addPost', {
+      const res = await fetch(`http://localhost:3001/addPost/${newPost}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPost),
