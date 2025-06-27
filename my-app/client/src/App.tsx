@@ -7,7 +7,7 @@ import HomePage from "./components/applicationLayout/homepage";
 import PostInfo from "./queries/PostInfo";
 import AuthorInfo from "./queries/AuthorInfo";
 import AllAuthors from "./queries/AllAuthors";
-
+import CheckServer from "./queries/CheckServer";
 function App(){
   return (
   <div className="space">
@@ -18,6 +18,7 @@ function App(){
     <Route path="/post/:id" element={<PostInfo/>}/>
     <Route path="/posts/:author" element={<AuthorInfo/>}/>
     <Route path="/authors" element={<AllAuthors/>}/>
+    <Route path="/Running" element={<CheckServer/>}/>
     </Routes>
     </ApplicationLayout>
 </div>

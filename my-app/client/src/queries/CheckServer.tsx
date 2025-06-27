@@ -1,17 +1,24 @@
-import { data, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function CheckServer() {
-  const [serverRes, seServertRes] = useState<boolean>(false);
+  const [status, setStatus] = useState<'checking' |'up'| 'down'>('checking');
 
   useEffect(() => {
-  fetch('http://localhost:3001/running')
-    .then(res => res.json())
-    .then(data => console.log(data.message))
-    .catch(err => console.error('Server is not running:', err));
-}, []);
+    fetch('http://localhost:3001/Running')
+      .then((res) => {
+        if (res.ok) setStatus('up');
+        else throw new Error('error');
+      })
+      .catch(() => setStatus('down'));
+  }, []);
 
-    return(<div>{data.toString()}</div>);
+  return (
+    <div>
+      {status === 'checking' && <p>Checking server status...</p>}
+      {status === 'up'&& <p style={{ color: 'green' }}>Server is running</p>}
+      {status === 'down' && <p style={{ color: 'red' }}>Server is not running</p>}
+    </div>
+  );
 }
 
 export default CheckServer;

@@ -9,6 +9,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/", postRoutes);
 
+app.get('/Running', (req, res) => {
+  res.status(200).send('Server is running!');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -12,7 +12,13 @@ export const fetchPostById = async (id: number) => {
   const file = fs.readFileSync(postsPath, 'utf-8');
   const posts = JSON.parse(file);
 
-  return posts.filter((post: any) => post.id === id);
+  const post = posts.find((post: any) => post.id === id);
+
+  if (post && !post.comments) {
+    post.comments = [];
+  }
+
+  return post;
 };
 
 export const fetchPostsByAuthor = async (author: string) => {
@@ -25,10 +31,8 @@ export const fetchPostsByAuthor = async (author: string) => {
 export const fetchAllAuthors = async () => {
   const file = fs.readFileSync(postsPath, 'utf-8');
   const posts = JSON.parse(file);
-  const allAuthors = posts.map((post: any)=> post.author);
+  const allAuthors = posts.map((post: any) => post.author);
   const diffAuthors = [...new Set(allAuthors)];
   
   return diffAuthors;
 };
-
-

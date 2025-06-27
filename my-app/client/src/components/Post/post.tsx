@@ -9,6 +9,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import CommentSection from "../CommentSection/CommentSection";
 
 interface PostProps {
+  id: number
   content: string;
   author: string;
   date: string;

@@ -39,9 +39,3 @@ export const getAllAuthors = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'server failed to get list of authors' });
   }
 };
-
-export const checkServerAvailable = (req: Request, res: Response) => {
-
-  res.status(200).json({ status: 'ok', message: 'Server is running' });
-};
-

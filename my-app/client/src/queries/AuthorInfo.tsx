@@ -27,7 +27,7 @@ function AuthorPosts() {
       ) : (
         posts.map(post => (
           <Post
-        key={post.id}
+        id={post.id}
         author={post.author}
         content={post.content}
         date={post.date}

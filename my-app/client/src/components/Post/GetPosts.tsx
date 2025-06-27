@@ -28,7 +28,7 @@ function Posts() {
   <div>
     {posts.map(({ id, author, content, date, comments, likeCount }) => (
       <Post
-        key={id}
+        id={Number(id)}
         author={author}
         content={content}
         date={date}
